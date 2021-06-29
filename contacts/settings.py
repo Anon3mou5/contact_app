@@ -27,7 +27,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
 
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    'EXCEPTION_HANDLER': 'utils.exception_handler.custom_exception_handler',
+    'PAGE_SIZE':'5',
+}
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'assignment',
 ]
 
 MIDDLEWARE = [
