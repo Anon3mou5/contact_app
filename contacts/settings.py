@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,7 +32,8 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
 
     # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    'DEFAULT_AUTHENTICATION_CLASSES':('rest_framework.authentication.BasicAuthentication',),
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
     'EXCEPTION_HANDLER': 'utils.exception_handler.custom_exception_handler',
     'PAGE_SIZE':'5',
 }
