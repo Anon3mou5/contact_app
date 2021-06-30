@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.shortcuts import redirect
 from django.conf import settings
-
+from django.views.generic import RedirectView
 
 urlpatterns = [
+    path('', lambda request: redirect('auth/users/',)),
     path('admin/', admin.site.urls),
     path('auth/',include('assignment.urls'))
+
 ]
