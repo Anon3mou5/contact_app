@@ -33,7 +33,7 @@ class Contact(viewsets.ModelViewSet):
   @action(detail=True,methods=['delete'])
   def delete(self, request, email=None):
     print('lol')
-    instance = get_object_or_404(Users,pk=email)
+    instance = get_object_or_404(Users,pk__icontains=email)
     serialised_data = {'email':instance.email}
     serialised_data['message']='successfully deleted above object'
     instance.delete()
